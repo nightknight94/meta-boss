@@ -20,11 +20,18 @@ DISTRO_FEATURES += "wifi"
 IMAGE_FEATURES_append = " ssh-server-dropbear"
 
 TOOLCHAIN_HOST_TASK += " \
-                         nativesdk-wiringpi \
-                         nativesdk-wiringpi-dev \
-                         nativesdk-gtest \
-                         nativesdk-gtest-dev \
+                         nativesdk-wiringpi      \
+                         nativesdk-wiringpi-dev  \
+                         nativesdk-gtest         \
+                         nativesdk-gtest-dev     \
+                         nativesdk-curl          \
+                         nativesdk-curl-dev      \
+                         nativesdk-cpr           \
+                         nativesdk-cpr-dev       \
                         "
 TOOLCHAIN_TARGET_TASK += " \
                            wiringpi \
+                           curl     \
+                           cpr      \
+                           cpr-dev  \
                          "
