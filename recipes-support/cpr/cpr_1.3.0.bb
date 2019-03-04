@@ -12,6 +12,9 @@ S = "${WORKDIR}/git"
 EXTRA_OECMAKE += " -DBUILD_CPR_TESTS=OFF -DUSE_SYSTEM_CURL=ON"
 inherit cmake
 
+OECMAKE_C_FLAGS += " -fPIC"
+OECMAKE_CXX_FLAGS += " -fPIC"
+
 # cpr library does not support installing with cmake
 do_install () {
 	install -d ${D}${libdir}
@@ -21,7 +24,6 @@ do_install () {
 	install -m 0755 ${S}/include/cpr/* ${D}${includedir}/cpr
 }
 
-FILES_${PN} = "${libdir}/libcpr.a" # main package cannot be empty
-PACKAGES = "${PN} ${PN}-dbg ${PN}-dev"
+ALLOW_EMPTY_${PN} = "1"
 
 BBCLASSEXTEND_append = " native nativesdk"
