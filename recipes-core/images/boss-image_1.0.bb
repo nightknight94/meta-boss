@@ -11,6 +11,9 @@ IMAGE_INSTALL_append = " \
                         \
                         linux-firmware-bcm43430 \
                         wpa-supplicant \
+                        ntp \
+                        tzdata \
+                        tzdata-europe \
                        "
 
 # hostapd dhcp-server iptables 
