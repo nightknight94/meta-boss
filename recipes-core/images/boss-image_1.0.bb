@@ -29,12 +29,17 @@ TOOLCHAIN_HOST_TASK += " \
                          nativesdk-gtest-dev     \
                          nativesdk-curl          \
                          nativesdk-curl-dev      \
-                         nativesdk-cpr-dev \
+                         nativesdk-cpr-dev       \
                          nativesdk-cpr-staticdev \
+                         nativesdk-jsoncpp       \
+                         nativesdk-jsoncpp-dev   \
                         "
+
 TOOLCHAIN_TARGET_TASK += " \
                            wiringpi       \
                            curl           \
                            cpr-dev        \
                            cpr-staticdev  \
+                           jsoncpp        \
+                           jsoncpp-dev    \
                          "
