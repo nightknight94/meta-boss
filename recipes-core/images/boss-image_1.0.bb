@@ -33,6 +33,7 @@ TOOLCHAIN_HOST_TASK += " \
                          nativesdk-cpr-staticdev \
                          nativesdk-jsoncpp       \
                          nativesdk-jsoncpp-dev   \
+                         nativesdk-packagegroup-sdk-buildchain \
                         "
 
 TOOLCHAIN_TARGET_TASK += " \
