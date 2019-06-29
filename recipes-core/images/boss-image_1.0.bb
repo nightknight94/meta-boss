@@ -1,46 +1,52 @@
-# Base this image on core-image-minimal
 include recipes-core/images/core-image-minimal.bb
 
-# Include modules in rootfs
-IMAGE_INSTALL_append = " \ 
-                        vim      \
-                        kernel-modules \
-                        i2c-tools \
-                        wiringpi \
-                        libstdc++ \
-                        \
-                        linux-firmware-bcm43430 \
-                        wpa-supplicant \
-                        ntp \
-                        tzdata \
-                        tzdata-europe \
-                       "
+# Temporary 
+DEVELOPEMENT_PKGS = " \ 
+    \
+    libstdc++ \
+    \
+    ntp \
+    tzdata \
+    tzdata-europe \
+"
 
-# hostapd dhcp-server iptables 
+# TODO: check if this config will pull wayland on warrior
+# propably one of them pulls strange dependencies
+#    vim \ 40mb
+#    kernel-modules \ 70 mb
+
+#    hostapd dhcp-server iptables
 
 
-DISTRO_FEATURES += "wifi"
-IMAGE_FEATURES_append = " ssh-server-dropbear"
+# Needed for wifi to work properly
+WIFI_REQUIRED_PKGS = " \
+    linux-firmware-bcm43430 \
+    wpa-supplicant \
+"
+#linux-firmware-rpidistro-bcm43430
 
+DISTRO_FEATURES = "wifi"
+
+# TODO: custom distro
+# TODO: set machine and distro with `export`
+
+IMAGE_FEATURES = "debug-tweaks ssh-server-dropbear"
+IMAGE_INSTALL_append = " ${WIFI_REQUIRED_PKGS} ${DEVELOPEMENT_PKGS}"
+
+# check if this will work:
+#     host with +=
+#     target with =
+# or do I even care about sdk size?
 TOOLCHAIN_HOST_TASK += " \
-                         nativesdk-wiringpi      \
-                         nativesdk-wiringpi-dev  \
-                         nativesdk-gtest         \
-                         nativesdk-gtest-dev     \
-                         nativesdk-curl          \
-                         nativesdk-curl-dev      \
-                         nativesdk-cpr-dev       \
-                         nativesdk-cpr-staticdev \
-                         nativesdk-jsoncpp       \
-                         nativesdk-jsoncpp-dev   \
-                         nativesdk-packagegroup-sdk-buildchain \
-                        "
+    nativesdk-gtest-dev      \
+    nativesdk-cpr-dev        \
+    nativesdk-cpr-staticdev  \
+    nativesdk-jsoncpp-dev    \
+    nativesdk-lvgl-staticdev \
+"
 
 TOOLCHAIN_TARGET_TASK += " \
-                           wiringpi       \
-                           curl           \
-                           cpr-dev        \
-                           cpr-staticdev  \
-                           jsoncpp        \
-                           jsoncpp-dev    \
-                         "
+    cpr-staticdev  \
+    jsoncpp-dev    \
+    lvgl-staticdev \
+"
