@@ -1,9 +1,9 @@
 DESCRIPTION = "cpr"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=f28c0d4b9780111fb0975c6bbb374d4b"
 
 SRC_URI = "git://github.com/whoshuu/cpr.git;protocol=https"
-SRCREV = "92182a6e0ab952d60d823080afd5f9416593317d"
+SRCREV = "feebd2fd5467e219cf124acb5de3f8eee0d0970b"
 
 DEPENDS += "curl"
 
